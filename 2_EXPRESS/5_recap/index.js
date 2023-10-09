@@ -1,11 +1,14 @@
-const express = require("express")
+const express = require("express") //serve para importar express
+const path = require("path")
 
-const app= express()
+const app = express()
 
-app.get('/', (requisicao, resposta) =>{
-    resposta.send("Seja bem-vindo(a) ao meu Servidor!")
+const caminho = path.join(__dirname, "templates")
+
+app.get('/', (requisicao, resposta) => {
+    resposta.sendFile(`${caminho}/index.html`)
 })
 
-app.listen(3000, () =>{
-    console.log("servidor rodando na porta 3000")
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000")
 })
